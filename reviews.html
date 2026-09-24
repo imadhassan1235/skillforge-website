@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Student Reviews | SkillForge</title>
+
+  <meta
+    name="description"
+    content="Read experiences from SkillForge interns and share your internship experience."
+  >
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .reviews-page{
+      min-height:calc(100vh - 78px);
+      padding:80px 0 100px;
+      background:
+        radial-gradient(circle at 85% 8%,rgba(255,255,255,.05),transparent 30%),
+        #050505;
+    }
+
+    .reviews-wrapper{
+      width:min(1100px,calc(100% - 40px));
+      margin:auto;
+    }
+
+    .reviews-header{
+      max-width:720px;
+      margin:0 auto 55px;
+      text-align:center;
+    }
+
+    .reviews-header h1{
+      font-size:clamp(38px,5vw,60px);
+      margin:14px 0 16px;
+    }
+
+    .reviews-header p{
+      color:#99999d;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .review-action{
+      display:flex;
+      justify-content:center;
+      margin-top:28px;
+    }
+
+    .review-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:180px;
+      height:48px;
+      padding:0 24px;
+      background:#e5e5e5;
+      color:#080808;
+      border:1px solid #d0d0d0;
+      border-radius:4px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      transition:.2s;
+    }
+
+    .review-button:hover{
+      background:#fff;
+      transform:translateY(-1px);
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .review-card{
+      background:linear-gradient(145deg,#111113,#090909);
+      border:1px solid #29292c;
+      border-radius:8px;
+      padding:26px;
+      min-height:210px;
+    }
+
+    .review-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:15px;
+      margin-bottom:18px;
+    }
+
+    .review-name{
+      color:#f2f2f2;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .review-role{
+      color:#77777b;
+      font-size:11px;
+      margin-top:5px;
+    }
+
+    .review-stars{
+      color:#d6d6d6;
+      font-size:13px;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    .review-text{
+      color:#aaa;
+      font-size:12px;
+      line-height:1.8;
+    }
+
+    .review-status{
+      display:inline-block;
+      margin-top:20px;
+      padding:5px 9px;
+      border:1px solid #303034;
+      border-radius:3px;
+      color:#77777b;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+
+    .empty-reviews{
+      grid-column:1 / -1;
+      text-align:center;
+      padding:50px 20px;
+      border:1px solid #29292c;
+      background:#0b0b0c;
+      border-radius:8px;
+      color:#77777b;
+      font-size:13px;
+    }
+
+    @media(max-width:850px){
+      .reviews-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .reviews-page{
+        padding:55px 0 70px;
+      }
+
+      .reviews-grid{
+        grid-template-columns:1fr;
+      }
+
+      .reviews-header h1{
+        font-size:40px;
+      }
+
+      .review-button{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <div class="container nav-inner">
+
+    <a class="brand" href="index.html">
+      <img
+        src="assets/skillforge-logo.png"
+        alt="SkillForge logo"
+      >
+      <span>SKILLFORGE</span>
+    </a>
+
+    <button class="menu" aria-label="Open menu">
+      Menu
+    </button>
+
+    <nav class="links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="internships.html">
+        Internships
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a class="apply-nav" href="apply.html">
+        Apply Now
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="reviews-page">
+
+  <div class="reviews-wrapper">
+
+    <section class="reviews-header">
+
+      <div class="eyebrow">
+        SkillForge Internship Program
+      </div>
+
+      <h1>
+        Student Experiences.
+      </h1>
+
+      <p>
+        Hear from students who have completed their internship
+        journey with SkillForge and discover what they learned,
+        built and experienced.
+      </p>
+
+      <div class="review-action">
+
+        <a
+          href="submit-review.html"
+          class="review-button"
+        >
+          Share Your Experience
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <section class="reviews-grid">
+
+      <!-- Temporary sample review -->
+
+      <article class="review-card">
+
+        <div class="review-top">
+
+          <div>
+
+            <div class="review-name">
+              Student Name
+            </div>
+
+            <div class="review-role">
+              Graphic Design Intern
+            </div>
+
+          </div>
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+        </div>
+
+        <div class="review-text">
+          Student reviews will appear here after they have
+          completed their internship and their review has
+          been approved by the SkillForge team.
+        </div>
+
+        <span class="review-status">
+          Internship Completed
+        </span>
+
+      </article>
+
+
+      <!-- Empty cards for future approved reviews -->
+
+      <div class="empty-reviews">
+        More student experiences will be published here soon.
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <span>
+      © <span id="year"></span> SkillForge.
+    </span>
+
+    <span>
+      Forge your skills. Build your future.
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

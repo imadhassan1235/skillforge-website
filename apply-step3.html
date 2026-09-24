@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Portfolio & Review | SkillForge</title>
+
+  <meta
+    name="description"
+    content="Complete your SkillForge internship application."
+  >
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .apply-page{
+      min-height:calc(100vh - 78px);
+      padding:70px 0 90px;
+      background:
+        radial-gradient(circle at 85% 10%,rgba(255,255,255,.055),transparent 32%),
+        #050505;
+    }
+
+    .apply-wrapper{
+      width:min(1080px,calc(100% - 40px));
+      margin:auto;
+    }
+
+    .apply-progress{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:45px;
+    }
+
+    .progress-step{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#66666a;
+      font-size:12px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .progress-number{
+      width:36px;
+      height:36px;
+      border:1px solid #353539;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0d0d0e;
+      color:#77777b;
+      font-size:12px;
+    }
+
+    .progress-step.active{
+      color:#fff;
+    }
+
+    .progress-step.active .progress-number{
+      background:#e4e4e4;
+      color:#050505;
+      border-color:#e4e4e4;
+    }
+
+    .progress-line{
+      width:110px;
+      height:1px;
+      background:#29292c;
+      margin:0 14px;
+    }
+
+    .apply-header{
+      text-align:center;
+      max-width:720px;
+      margin:0 auto 42px;
+    }
+
+    .apply-header h1{
+      font-size:clamp(36px,5vw,58px);
+      margin-bottom:16px;
+    }
+
+    .apply-header p{
+      color:#99999d;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .application-card{
+      background:linear-gradient(145deg,#111113,#090909);
+      border:1px solid #29292c;
+      border-radius:10px;
+      padding:42px;
+      box-shadow:0 25px 80px rgba(0,0,0,.35);
+    }
+
+    .form-section-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:30px;
+      padding-bottom:18px;
+      border-bottom:1px solid #29292c;
+    }
+
+    .form-section-number{
+      width:34px;
+      height:34px;
+      border:1px solid #444448;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#ddd;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .form-section-title h2{
+      font-size:22px;
+      margin:0;
+    }
+
+    .form-section-title p{
+      color:#77777b;
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px 20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .form-group.full{
+      grid-column:1 / -1;
+    }
+
+    .form-group label{
+      color:#d0d0d3;
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:8px;
+    }
+
+    .required{
+      color:#aaa;
+    }
+
+    .form-group input,
+    .form-group textarea{
+      width:100%;
+      box-sizing:border-box;
+      background:#080809;
+      border:1px solid #303034;
+      border-radius:5px;
+      color:#f4f4f4;
+      padding:13px 14px;
+      font-family:inherit;
+      font-size:13px;
+      outline:none;
+      transition:border-color .2s,box-shadow .2s;
+      margin:0;
+    }
+
+    .form-group input{
+      height:48px;
+    }
+
+    .form-group textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder{
+      color:#5f5f63;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus{
+      border-color:#77777b;
+      box-shadow:0 0 0 3px rgba(255,255,255,.04);
+    }
+
+    .field-note{
+      color:#626266;
+      font-size:11px;
+      margin-top:7px;
+    }
+
+    .confirmation{
+      margin-top:30px;
+      padding:22px;
+      border:1px solid #29292c;
+      background:#0b0b0c;
+      border-radius:6px;
+    }
+
+    .confirmation-title{
+      color:#eee;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .confirmation-text{
+      color:#77777b;
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .checkbox-row{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      margin-top:20px;
+    }
+
+    .checkbox-row input{
+      width:16px;
+      height:16px;
+      margin-top:2px;
+      accent-color:#e5e5e5;
+      flex-shrink:0;
+    }
+
+    .checkbox-row label{
+      color:#aaa;
+      font-size:12px;
+      line-height:1.6;
+      cursor:pointer;
+    }
+
+    .application-footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-top:40px;
+      padding-top:28px;
+      border-top:1px solid #29292c;
+    }
+
+    .application-footer-note{
+      color:#66666a;
+      font-size:11px;
+      max-width:500px;
+      line-height:1.6;
+    }
+
+    .footer-buttons{
+      display:flex;
+      gap:10px;
+    }
+
+    .back-button,
+    .submit-button{
+      min-width:150px;
+      height:48px;
+      border-radius:4px;
+      font-family:inherit;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .back-button{
+      background:transparent;
+      color:#ddd;
+      border:1px solid #3b3b3f;
+    }
+
+    .submit-button{
+      border:1px solid #d0d0d0;
+      background:#e5e5e5;
+      color:#090909;
+    }
+
+    .back-button:hover,
+    .submit-button:hover{
+      transform:translateY(-1px);
+    }
+
+    .submit-button:hover{
+      background:#fff;
+    }
+
+    .submit-button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    /* Success */
+
+    .success-box{
+      display:none;
+      text-align:center;
+      padding:55px 30px;
+    }
+
+    .success-icon{
+      width:64px;
+      height:64px;
+      margin:0 auto 22px;
+      border:1px solid #777;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:25px;
+      color:#fff;
+    }
+
+    .success-box h2{
+      color:#fff;
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .success-box p{
+      color:#888;
+      font-size:13px;
+      line-height:1.8;
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    .success-id{
+      margin-top:20px;
+      color:#ccc;
+      font-size:12px;
+    }
+
+    @media(max-width:700px){
+
+      .apply-page{
+        padding:45px 0 60px;
+      }
+
+      .apply-progress{
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:5px;
+      }
+
+      .progress-line{
+        width:45px;
+        margin:0 8px;
+      }
+
+      .progress-step{
+        font-size:10px;
+      }
+
+      .progress-number{
+        width:32px;
+        height:32px;
+      }
+
+      .application-card{
+        padding:24px 20px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .form-group.full{
+        grid-column:auto;
+      }
+
+      .application-footer{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .footer-buttons{
+        width:100%;
+      }
+
+      .back-button,
+      .submit-button{
+        width:100%;
+      }
+
+      .apply-header h1{
+        font-size:38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <div class="container nav-inner">
+
+    <a class="brand" href="index.html">
+      <img
+        src="assets/skillforge-logo.png"
+        alt="SkillForge logo"
+      >
+      <span>SKILLFORGE</span>
+    </a>
+
+    <button class="menu" aria-label="Open menu">
+      Menu
+    </button>
+
+    <nav class="links">
+
+      <a href="index.html">Home</a>
+
+      <a href="internships.html">Internships</a>
+
+      <a href="about.html">About</a>
+
+      <a href="contact.html">Contact</a>
+
+      <a class="apply-nav" href="apply.html">Apply Now</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="apply-page">
+
+  <div class="apply-wrapper">
+
+    <!-- Progress -->
+
+    <div class="apply-progress">
+
+      <div class="progress-step">
+        <span class="progress-number">01</span>
+        <span>Registration</span>
+      </div>
+
+      <div class="progress-line"></div>
+
+      <div class="progress-step">
+        <span class="progress-number">02</span>
+        <span>Internship Details</span>
+      </div>
+
+      <div class="progress-line"></div>
+
+      <div class="progress-step active">
+        <span class="progress-number">03</span>
+        <span>Portfolio & Review</span>
+      </div>
+
+    </div>
+
+
+    <!-- Header -->
+
+    <div class="apply-header">
+
+      <div class="eyebrow">
+        SkillForge Internship Program
+      </div>
+
+      <h1>Show us what you've built.</h1>
+
+      <p>
+        Share your professional profiles, portfolio and a little
+        about your goals. Don't worry if you are a beginner —
+        SkillForge welcomes freshers who are ready to learn.
+      </p>
+
+    </div>
+
+
+    <!-- Application Card -->
+
+    <form
+      class="application-card"
+      id="portfolioForm"
+    >
+
+      <!-- FORM -->
+
+      <div id="formContent">
+
+        <div class="form-section-title">
+
+          <div class="form-section-number">
+            03
+          </div>
+
+          <div>
+
+            <h2>Portfolio & Review</h2>
+
+            <p>
+              Add your professional profiles and final application details.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <!-- GitHub -->
+
+          <div class="form-group">
+
+            <label for="github">
+              GitHub Profile
+            </label>
+
+            <input
+              type="url"
+              id="github"
+              name="github"
+              placeholder="https://github.com/username"
+            >
+
+            <span class="field-note">
+              Optional — recommended for development applicants.
+            </span>
+
+          </div>
+
+
+          <!-- LinkedIn -->
+
+          <div class="form-group">
+
+            <label for="linkedin">
+              LinkedIn Profile
+            </label>
+
+            <input
+              type="url"
+              id="linkedin"
+              name="linkedin"
+              placeholder="https://linkedin.com/in/username"
+            >
+
+          </div>
+
+
+          <!-- Portfolio -->
+
+          <div class="form-group full">
+
+            <label for="portfolio">
+              Portfolio / Behance / Website
+            </label>
+
+            <input
+              type="url"
+              id="portfolio"
+              name="portfolio"
+              placeholder="https://yourwebsite.com"
+            >
+
+            <span class="field-note">
+              Designers can add Behance or Dribbble.
+              Developers can add their portfolio website.
+            </span>
+
+          </div>
+
+
+          <!-- Motivation -->
+
+          <div class="form-group full">
+
+            <label for="motivation">
+              Why do you want to join SkillForge?
+              <span class="required">*</span>
+            </label>
+
+            <textarea
+              id="motivation"
+              name="motivation"
+              placeholder="Tell us why you are interested in this internship."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <!-- Achievement -->
+
+          <div class="form-group full">
+
+            <label for="achievement">
+              What do you want to achieve during this internship?
+              <span class="required">*</span>
+            </label>
+
+            <textarea
+              id="achievement"
+              name="achievement"
+              placeholder="For example: improve my skills, build projects, learn teamwork, strengthen my portfolio, etc."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <!-- Work Samples -->
+
+          <div class="form-group full">
+
+            <label for="workSamples">
+              Previous Projects / Work Samples
+            </label>
+
+            <textarea
+              id="workSamples"
+              name="workSamples"
+              placeholder="Briefly describe your previous projects, freelance work, academic projects or other relevant work."
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <!-- Confirmation -->
+
+        <div class="confirmation">
+
+          <div class="confirmation-title">
+            Before you submit
+          </div>
+
+          <div class="confirmation-text">
+
+            SkillForge internships are structured around practical
+            learning, assigned tasks, project work, mentorship and
+            professional development. Selection is based on the
+            information provided during the application review.
+
+          </div>
+
+
+          <div class="checkbox-row">
+
+            <input
+              type="checkbox"
+              id="agreement"
+              required
+            >
+
+            <label for="agreement">
+
+              I confirm that the information I have provided is
+              accurate, and I am willing to complete assigned tasks,
+              meet deadlines and actively participate in the internship
+              program.
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <div class="application-footer">
+
+          <p class="application-footer-note">
+
+            Once submitted, your application will be reviewed by the
+            SkillForge team. Keep your contact details active for
+            application updates.
+
+          </p>
+
+
+          <div class="footer-buttons">
+
+            <button
+              type="button"
+              class="back-button"
+              id="backButton"
+            >
+              Back
+            </button>
+
+            <button
+              type="submit"
+              class="submit-button"
+              id="submitButton"
+            >
+              Submit Application
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- SUCCESS -->
+
+      <div
+        class="success-box"
+        id="successBox"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>
+          Application Submitted
+        </h2>
+
+        <p>
+          Thank you for applying to SkillForge.
+          Your internship application has been successfully received.
+          Our team will review your application and contact you using
+          the information provided.
+        </p>
+
+        <div class="success-id">
+          Application ID:
+          <strong id="applicationId"></strong>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <span>
+      © <span id="year"></span> SkillForge.
+    </span>
+
+    <span>
+      Forge your skills. Build your future.
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+  /*
+   * =========================================================
+   * SKILLFORGE APPLICATION SUBMISSION
+   * =========================================================
+   */
+
+  const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzK56x2QFnEOlDpbD0kgWA84x7PvyV5wBNdNM3Sfvrz2wZWyAx0skIqzZxKx20lrd4Izg/exec";
+
+
+  const portfolioForm =
+    document.getElementById("portfolioForm");
+
+  const backButton =
+    document.getElementById("backButton");
+
+  const submitButton =
+    document.getElementById("submitButton");
+
+  const formContent =
+    document.getElementById("formContent");
+
+  const successBox =
+    document.getElementById("successBox");
+
+  const applicationId =
+    document.getElementById("applicationId");
+
+
+  /*
+   * =========================================================
+   * BACK TO STEP 2
+   * =========================================================
+   */
+
+  backButton.addEventListener("click", function(){
+
+    window.location.href = "apply-step2.html";
+
+  });
+
+
+  /*
+   * =========================================================
+   * GET SAVED DATA FROM STEP 1
+   * =========================================================
+   */
+
+  function getStoredObject(key){
+
+    try{
+
+      const value =
+        sessionStorage.getItem(key);
+
+      if(!value){
+        return {};
+      }
+
+      return JSON.parse(value) || {};
+
+    }catch(error){
+
+      console.error(
+        "Could not read:",
+        key,
+        error
+      );
+
+      return {};
+
+    }
+
+  }
+
+
+  /*
+   * STEP DATA
+   *
+   * These are the objects saved by Step 1
+   * and Step 2.
+   */
+
+  function getStep1Data(){
+
+    return getStoredObject("skillforgeStep1");
+
+  }
+
+
+  function getStep2Data(){
+
+    return getStoredObject("skillforgeStep2");
+
+  }
+
+
+  /*
+   * =========================================================
+   * CREATE APPLICATION ID
+   * =========================================================
+   */
+
+  function createApplicationId(){
+
+    const now =
+      new Date();
+
+    const random =
+      Math.floor(
+        1000 + Math.random() * 9000
+      );
+
+    return (
+      "SF-" +
+      now.getFullYear() +
+      "-" +
+      String(now.getMonth() + 1).padStart(2,"0") +
+      String(now.getDate()).padStart(2,"0") +
+      "-" +
+      random
+    );
+
+  }
+
+
+  /*
+   * =========================================================
+   * SUBMIT APPLICATION
+   * =========================================================
+   */
+
+  portfolioForm.addEventListener(
+    "submit",
+    async function(event){
+
+      event.preventDefault();
+
+
+      /*
+       * Prevent double click
+       */
+
+      if(submitButton.disabled){
+        return;
+      }
+
+
+      /*
+       * Read Step 1
+       */
+
+      const step1 =
+        getStep1Data();
+
+
+      /*
+       * Read Step 2
+       */
+
+      const step2 =
+        getStep2Data();
+
+
+      /*
+       * Read Step 3
+       */
+
+      const step3 = {
+
+        github:
+          document
+            .getElementById("github")
+            .value
+            .trim(),
+
+        linkedin:
+          document
+            .getElementById("linkedin")
+            .value
+            .trim(),
+
+        portfolio:
+          document
+            .getElementById("portfolio")
+            .value
+            .trim(),
+
+        motivation:
+          document
+            .getElementById("motivation")
+            .value
+            .trim(),
+
+        achievement:
+          document
+            .getElementById("achievement")
+            .value
+            .trim(),
+
+        workSamples:
+          document
+            .getElementById("workSamples")
+            .value
+            .trim(),
+
+        agreement:
+          document
+            .getElementById("agreement")
+            .checked
+
+      };
+
+
+      /*
+       * Create Application ID
+       */
+
+      const generatedId =
+        createApplicationId();
+
+
+      /*
+       * Combine all 3 steps
+       */
+
+      const applicationData = {
+
+        applicationId:
+          generatedId,
+
+        ...step1,
+
+        ...step2,
+
+        ...step3,
+
+        submittedAt:
+          new Date().toISOString()
+
+      };
+
+
+      /*
+       * Save complete application locally
+       * before sending.
+       */
+
+      sessionStorage.setItem(
+        "skillforgeApplication",
+        JSON.stringify(applicationData)
+      );
+
+
+      /*
+       * Change button state
+       */
+
+      submitButton.disabled = true;
+
+      submitButton.textContent =
+        "Submitting...";
+
+
+      try{
+
+        /*
+         * Send complete application
+         * to Google Apps Script.
+         */
+
+        const response =
+          await fetch(
+            APPS_SCRIPT_URL,
+            {
+
+              method:"POST",
+
+              headers:{
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+              },
+
+              body:
+                JSON.stringify(
+                  applicationData
+                )
+
+            }
+          );
+
+
+        /*
+         * Try to read response.
+         */
+
+        let result = null;
+
+        try{
+
+          result =
+            await response.json();
+
+        }catch(error){
+
+          /*
+           * Some Apps Script responses
+           * may not return JSON.
+           */
+
+          result = {
+            success:true
+          };
+
+        }
+
+
+        /*
+         * If server explicitly says failed
+         */
+
+        if(
+          result &&
+          result.success === false
+        ){
+
+          throw new Error(
+            result.message ||
+            "Application submission failed."
+          );
+
+        }
+
+
+        /*
+         * SUCCESS
+         */
+
+        formContent.style.display =
+          "none";
+
+        successBox.style.display =
+          "block";
+
+        applicationId.textContent =
+          generatedId;
+
+
+        /*
+         * Clear temporary step data
+         * after successful submission.
+         */
+
+        sessionStorage.removeItem(
+          "skillforgeStep1"
+        );
+
+        sessionStorage.removeItem(
+          "skillforgeStep2"
+        );
+
+        sessionStorage.removeItem(
+          "skillforgeStep3"
+        );
+
+
+      }catch(error){
+
+        console.error(
+          "Submission error:",
+          error
+        );
+
+
+        alert(
+          "Your application could not be submitted right now. Please check your internet connection and try again."
+        );
+
+
+        submitButton.disabled =
+          false;
+
+        submitButton.textContent =
+          "Submit Application";
+
+      }
+
+    }
+  );
+
+</script>
+
+</body>
+</html>

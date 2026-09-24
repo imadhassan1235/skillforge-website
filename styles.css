@@ -878,3 +878,32 @@ textarea{
   }
 
 }
+
+.apply-nav{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:0 16px;
+  border:1px solid #d0d0d0;
+  border-radius:4px;
+  background:#e5e5e5;
+  color:#090909 !important;
+  font-size:12px !important;
+  font-weight:700;
+  letter-spacing:.03em;
+  transition:.2s;
+}
+
+.apply-nav:hover{
+  background:#fff;
+  color:#050505 !important;
+  transform:translateY(-1px);
+}
+
+@media(max-width:800px){
+  .apply-nav{
+    width:100%;
+    justify-content:flex-start;
+  }
+}
