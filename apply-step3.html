@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    if (localStorage.getItem("theme") === "light") {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
 
   <title>Portfolio & Review | SkillForge</title>
 
@@ -433,6 +438,7 @@
       <a href="contact.html">Contact</a>
 
       <a class="apply-nav" href="apply.html">Apply Now</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☀️</button>
 
     </nav>
 

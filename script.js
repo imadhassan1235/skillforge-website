@@ -1,5 +1,30 @@
 const menu = document.querySelector(".menu");
 const links = document.querySelector(".links");
+const themeToggle = document.querySelector("#theme-toggle");
+
+const applyTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  window.localStorage.setItem("theme", theme);
+
+  if (themeToggle) {
+    const isDark = theme === "dark";
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
+    themeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light theme" : "Switch to dark theme"
+    );
+  }
+};
+
+applyTheme(document.documentElement.dataset.theme || "dark");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme =
+      document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    applyTheme(nextTheme);
+  });
+}
 
 if (menu && links) {
   menu.addEventListener("click", () => {
